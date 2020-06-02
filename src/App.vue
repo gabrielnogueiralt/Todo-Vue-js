@@ -1,69 +1,20 @@
 <template>
   <div id="app">
     <Header />
-    <AddTodo v-on:add-todo="addTodo"/>
-    <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo"/>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import Header from './components/layout/Header.vue'
-import Todos from './components/Todos'
-import AddTodo from './components/AddTodo'
-import axios from 'axios'
-
+import Header from './components/layout/Header';
 export default {
-  name: 'App',
+  name:"app",
   components: {
-    Header,
-    Todos,
-    AddTodo
-  },
-  data() {
-    return {
-      todos: [
-        {
-          id: 1,
-          title: "Workout",
-          completed: false
-        },
-        {
-          id: 2,
-          title: "Read",
-          completed: true
-        },
-        {
-          id: 3,
-          title: "Study",
-          completed: false
-        }
-      ]
-    }
-  },
-  methods: {
-    deleteTodo(id) {
-      axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
-      .then(res => this.todos = res.data.filter(todo => todo.id !== id))
-      .catch(err => console.log(err))
-      
-    },
-    addTodo(newTodo){
-        const { title, completed } = newTodo
-        axios.post('https://jsonplaceholder.typicode.com/todos', {
-          title,
-          completed
-        })
-        .then(res => this.todos = [...this.todos, res.data])
-        .catch(err => console.log(err))
-    }
-  },
-  created() {
-    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5')
-    .then(res =>  this.todos = res.data)
-    .catch(err => console.log(err))
+    Header
   }
 }
 </script>
+
 
 <style>
   * {
@@ -71,6 +22,7 @@ export default {
     margin: 0;
     padding: 0;
   }
+
   body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.4;
@@ -86,6 +38,6 @@ export default {
   }
 
   .btn:hover {
-    background: #666 
+    background: #666;
   }
 </style>

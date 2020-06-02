@@ -1,27 +1,16 @@
-# Todo-App-Vue.js
-:white_check_mark: In order to learn about Vue, I made this simple to-do list application.
+# Vue Crash Course (TodoList)
 
-# test
+This is the code for [the crash course on YouTube](https://youtu.be/Wy9q22isx3U)
 
-## Project setup
-```
-yarn install
-```
+## Quick Start
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+```bash
+# Install dependencies
+npm install
 
-### Compiles and minifies for production
-```
-yarn build
-```
+# Serve on localhost:8080
+npm run serve
 
-### Lints and fixes files
+# Build for production
+npm run build
 ```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
